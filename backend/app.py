@@ -14,16 +14,7 @@ app = Flask(__name__)
 # Jab browser mein localhost:5000 kholo
 @app.route('/')
 def home():
-    return '''
-    <html>
-    <head><title>Travel Planner</title></head>
-    <body>
-        <h1>Budget Based Travel Planner</h1>
-        <p>Namaste! Aapka Travel Planner ready hai!</p>
-        <a href="/calculator">Calculator kholo</a>
-    </body>
-    </html>
-    '''
+    return render_template('index.html')
 
 
 # ---- ROUTE 2: Calculator Page ----
@@ -59,41 +50,30 @@ def calculator():
 # Form submit hone ke baad yahan aata hai
 @app.route('/result', methods=['POST'])
 def result():
-    # Form se data lo
     name   = request.form['name']
     budget = float(request.form['budget'])
     days   = int(request.form['days'])
     people = int(request.form['people'])
 
-    # Calculate karo
-    per_day    = budget / days
-    per_person = budget / people
+    per_day    = round(budget / days)
+    per_person = round(budget / people)
 
-    # Destination suggest karo
     if budget >= 200000:
-        destination = "International - Europe/Japan/USA"
+        destination = "International — Europe/Japan/USA"
     elif budget >= 80000:
-        destination = "International Asia - Thailand/Dubai/Nepal"
+        destination = "International Asia — Thailand/Dubai/Nepal"
     elif budget >= 30000:
-        destination = "Domestic Premium - Goa/Kashmir/Manali"
+        destination = "Domestic Premium — Goa/Kashmir/Manali"
     else:
-        destination = "Domestic Budget - Nearby states"
+        destination = "Domestic Budget — Nearby states"
 
-    return f'''
-    <html>
-    <head><title>Result</title></head>
-    <body>
-        <h1>Namaste {name}!</h1>
-        <h2>Aapki Travel Detail:</h2>
-        <p>Total Budget  : Rs {budget:,.0f}</p>
-        <p>Per Day       : Rs {per_day:,.0f}</p>
-        <p>Per Person    : Rs {per_person:,.0f}</p>
-        <p>Best Option   : {destination}</p>
-        <br>
-        <a href="/calculator">Wapas jaao</a>
-    </body>
-    </html>
-    '''
+    return render_template('result.html',
+        name=name,
+        budget=f"{budget:,.0f}",
+        per_day=f"{per_day:,}",
+        per_person=f"{per_person:,}",
+        destination=destination
+    )
 
 
 # ============================================

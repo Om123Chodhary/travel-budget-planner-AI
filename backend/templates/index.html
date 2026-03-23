@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>✈️ Travel Planner</h1>
+        <p>Budget ke hisaab se duniya ghooomo!</p>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Apna Budget Daalo</h2>
+            <p>Hum batayenge kahan ja sakte ho!</p>
+        </div>
+
+        <div class="card">
+            <form action="/result" method="POST">
+
+                <div class="form-group">
+                    <label>Aapka Naam</label>
+                    <input type="text" name="name" placeholder="OmaRam Choudhary" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Travel Budget (Rs mein)</label>
+                    <input type="number" name="budget" placeholder="100000" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Kitne Din</label>
+                    <input type="number" name="days" placeholder="7" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Kitne Log</label>
+                    <input type="number" name="people" placeholder="2" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Travel Style</label>
+                    <select name="style">
+                        <option value="budget">Budget Travel</option>
+                        <option value="comfort">Comfort Travel</option>
+                        <option value="luxury">Luxury Travel</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Calculate 🚀</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

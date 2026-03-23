@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>✈️ Travel Planner</h1>
+        <p>Budget ke hisaab se duniya ghooomo!</p>
+    </nav>
+
+    <div class="container">
+
+        <div class="hero">
+            <h2>Namaste {{ name }}! 🎉</h2>
+            <p>Aapki travel detail ready hai!</p>
+        </div>
+
+        <div class="result-grid">
+
+            <div class="result-card">
+                <div class="result-icon">💰</div>
+                <div class="result-label">Total Budget</div>
+                <div class="result-value">Rs {{ budget }}</div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-icon">📅</div>
+                <div class="result-label">Per Day</div>
+                <div class="result-value">Rs {{ per_day }}</div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-icon">👥</div>
+                <div class="result-label">Per Person</div>
+                <div class="result-value">Rs {{ per_person }}</div>
+            </div>
+
+            <div class="result-card highlight">
+                <div class="result-icon">🌍</div>
+                <div class="result-label">Best Option</div>
+                <div class="result-value">{{ destination }}</div>
+            </div>
+
+        </div>
+
+        <div class="card" style="text-align:center; margin-top: 2rem;">
+            <a href="/" class="btn">🔄 Dobara Try Karo</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
