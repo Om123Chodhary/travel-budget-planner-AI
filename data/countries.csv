@@ -1,0 +1,193 @@
+country,continent,flight_cost_inr,hotel_per_day_inr,food_per_day_inr,local_transport_inr,visa_fee_inr,min_days,best_time,language,safety_rating,temperature_c,weather_icon,currency_code,peak_season,off_season
+Afghanistan,Asia,35000,2000,800,400,0,5,May-Sep,Pashto,3,18,☀️,AFN,May-Sep,Oct-Apr
+Albania,Europe,38000,2500,1000,500,5200,6,Jun-Sep,Albanian,7,20,☀️,ALL,Jun-Sep,Oct-May
+Algeria,Africa,45000,3000,1200,600,5200,7,Mar-May,Arabic,5,22,☀️,DZD,Mar-May,Jun-Feb
+Andorra,Europe,50000,4000,1500,800,5200,5,Jun-Sep,Catalan,8,15,❄️,EUR,Jun-Sep,Oct-May
+Angola,Africa,55000,3500,1400,700,5200,7,May-Sep,Portuguese,5,24,☀️,AOA,May-Sep,Oct-Apr
+Argentina,Americas,62000,4000,1500,700,5200,8,Nov-Feb,Spanish,7,18,☀️,ARS,Nov-Feb,Mar-Oct
+Armenia,Asia,32000,2200,900,450,0,6,May-Sep,Armenian,7,12,❄️,AMD,May-Sep,Oct-Apr
+Australia,Oceania,80000,8000,2800,1300,15000,10,Sep-Nov,English,9,22,☀️,AUD,Sep-Nov,Dec-Aug
+Austria,Europe,55000,6000,2000,1000,5200,7,May-Sep,German,9,12,❄️,EUR,May-Sep,Oct-Apr
+Azerbaijan,Asia,33000,2500,1000,500,0,6,May-Sep,Azerbaijani,6,15,☀️,AZN,May-Sep,Oct-Apr
+Bahamas,Americas,65000,7000,2500,1200,5200,7,Nov-Apr,English,8,26,☀️,BSD,Nov-Apr,May-Oct
+Bahrain,Asia,28000,4000,1500,800,0,5,Nov-Mar,Arabic,8,27,☀️,BHD,Nov-Mar,Apr-Oct
+Bangladesh,Asia,22000,1500,600,300,0,5,Nov-Feb,Bengali,5,26,☀️,BDT,Nov-Feb,Mar-Oct
+Barbados,Americas,60000,6000,2200,1000,5200,7,Dec-Apr,English,8,27,☀️,BBD,Dec-Apr,May-Nov
+Belarus,Europe,38000,2500,1000,500,5200,6,May-Sep,Belarusian,6,10,❄️,BYN,May-Sep,Oct-Apr
+Belgium,Europe,50000,5500,2000,1000,5200,5,May-Sep,Dutch,8,12,🌧️,EUR,May-Sep,Oct-Apr
+Belize,Americas,52000,4000,1500,800,5200,7,Nov-Apr,English,7,26,☀️,BZD,Nov-Apr,May-Oct
+Benin,Africa,48000,2500,1000,500,5200,7,Nov-Feb,French,5,27,☀️,XOF,Nov-Feb,Mar-Oct
+Bhutan,Asia,25000,3000,1200,600,0,6,Mar-May,Dzongkha,8,15,❄️,BTN,Mar-May,Jun-Feb
+Bolivia,Americas,48000,2500,1000,500,5200,7,May-Oct,Spanish,6,15,❄️,BOB,May-Oct,Nov-Apr
+Bosnia,Europe,38000,2500,1000,500,5200,6,May-Sep,Bosnian,7,12,❄️,BAM,May-Sep,Oct-Apr
+Botswana,Africa,52000,3500,1300,700,5200,7,May-Sep,English,7,22,☀️,BWP,May-Sep,Oct-Apr
+Brazil,Americas,65000,5000,1800,900,5200,8,Apr-Jun,Portuguese,7,24,☀️,BRL,Apr-Oct,Nov-Mar
+Brunei,Asia,35000,4000,1500,800,0,5,Jan-May,Malay,8,27,☀️,BND,Jan-May,Jun-Dec
+Bulgaria,Europe,38000,3000,1200,600,5200,6,May-Sep,Bulgarian,7,15,☀️,BGN,May-Sep,Oct-Apr
+Burkina Faso,Africa,50000,2000,800,400,5200,7,Nov-Feb,French,4,28,☀️,XOF,Nov-Feb,Mar-Oct
+Burundi,Africa,55000,2000,800,400,5200,7,Jun-Aug,Kirundi,3,23,☀️,BIF,Jun-Aug,Sep-May
+Cambodia,Asia,22000,2000,800,500,3500,5,Nov-Mar,Khmer,7,28,☀️,KHR,Nov-May,Jun-Oct
+Cameroon,Africa,52000,2500,1000,500,5200,7,Nov-Feb,French,4,25,☀️,XAF,Nov-Feb,Mar-Oct
+Canada,Americas,72000,7500,2400,1100,15000,10,Jun-Sep,English,8,15,❄️,CAD,Jun-Sep,Oct-May
+Cape Verde,Africa,55000,3500,1300,700,5200,7,Nov-Jun,Portuguese,7,24,☀️,CVE,Nov-Jun,Jul-Oct
+Central African Republic,Africa,60000,2000,800,400,5200,7,Nov-Apr,French,2,26,☀️,XAF,Nov-Apr,May-Oct
+Chad,Africa,58000,2000,800,400,5200,7,Nov-Feb,Arabic,2,28,☀️,XAF,Nov-Feb,Mar-Oct
+Chile,Americas,58000,4500,1700,800,5200,8,Dec-Feb,Spanish,8,16,☀️,CLP,Dec-Feb,Mar-Nov
+China,Asia,35000,4000,1500,800,15000,7,Apr-May,Mandarin,7,20,🌸,CNY,Apr-Oct,Nov-Mar
+Colombia,Americas,58000,3000,1200,600,5200,7,Dec-Mar,Spanish,7,22,☀️,COP,Dec-Mar,Apr-Nov
+Comoros,Africa,60000,2500,1000,500,5200,7,May-Oct,Arabic,5,26,☀️,KMF,May-Oct,Nov-Apr
+Congo,Africa,55000,2500,1000,500,5200,7,Jun-Sep,French,3,25,☀️,XAF,Jun-Sep,Oct-May
+Costa Rica,Americas,52000,4500,1700,800,5200,7,Dec-Apr,Spanish,8,24,☀️,CRC,Dec-Apr,May-Nov
+Croatia,Europe,50000,5500,2000,900,5200,7,Jun-Sep,Croatian,8,18,☀️,EUR,Jun-Sep,Oct-May
+Cuba,Americas,48000,3000,1200,600,5200,7,Nov-Apr,Spanish,7,26,☀️,CUP,Nov-Apr,May-Oct
+Cyprus,Europe,42000,4500,1700,800,5200,7,Mar-May,Greek,8,20,☀️,EUR,Mar-May,Jun-Feb
+Czech Republic,Europe,45000,4500,1800,800,5200,6,May-Sep,Czech,8,14,☀️,CZK,May-Sep,Oct-Apr
+Denmark,Europe,55000,6000,2200,1000,5200,7,May-Sep,Danish,9,12,🌧️,DKK,May-Sep,Oct-Apr
+Djibouti,Africa,55000,3500,1300,700,5200,7,Nov-Apr,Arabic,5,30,☀️,DJF,Nov-Apr,May-Oct
+Dominica,Americas,55000,4000,1500,800,5200,7,Dec-Apr,English,7,26,☀️,XCD,Dec-Apr,May-Nov
+Dominican Republic,Americas,48000,4000,1500,800,5200,7,Dec-Apr,Spanish,7,27,☀️,DOP,Dec-Apr,May-Nov
+Ecuador,Americas,52000,3500,1300,700,5200,7,Jun-Sep,Spanish,7,18,☀️,USD,Jun-Sep,Oct-May
+Egypt,Africa,35000,4000,1400,700,5200,7,Oct-Feb,Arabic,7,25,☀️,EGP,Oct-Apr,May-Sep
+El Salvador,Americas,48000,3000,1200,600,5200,7,Nov-Apr,Spanish,6,26,☀️,USD,Nov-Apr,May-Oct
+Equatorial Guinea,Africa,58000,3500,1300,700,5200,7,Dec-Feb,Spanish,4,25,☀️,XAF,Dec-Feb,Mar-Nov
+Eritrea,Africa,55000,2500,1000,500,5200,7,Oct-Apr,Tigrinya,4,25,☀️,ERN,Oct-Apr,May-Sep
+Estonia,Europe,42000,3500,1300,700,5200,6,May-Sep,Estonian,8,10,❄️,EUR,May-Sep,Oct-Apr
+Eswatini,Africa,52000,3000,1200,600,5200,7,May-Sep,English,6,20,☀️,SZL,May-Sep,Oct-Apr
+Ethiopia,Africa,48000,2500,1000,500,5200,7,Oct-Feb,Amharic,5,20,☀️,ETB,Oct-Feb,Mar-Sep
+Fiji,Oceania,65000,5000,1800,900,5200,7,May-Oct,English,8,26,☀️,FJD,May-Oct,Nov-Apr
+Finland,Europe,55000,5500,2000,900,5200,7,Jun-Aug,Finnish,9,8,❄️,EUR,Jun-Aug,Sep-May
+France,Europe,65000,8000,2500,1200,5200,7,Apr-Jun,French,8,18,☀️,EUR,Apr-Oct,Nov-Mar
+Gabon,Africa,58000,3500,1300,700,5200,7,Jun-Aug,French,5,25,☀️,XAF,Jun-Aug,Sep-May
+Gambia,Africa,52000,2500,1000,500,5200,7,Nov-May,English,5,27,☀️,GMD,Nov-May,Jun-Oct
+Georgia,Asia,28000,3000,1200,600,0,6,May-Oct,Georgian,8,15,☀️,GEL,May-Oct,Nov-Apr
+Germany,Europe,60000,7000,2200,1100,5200,7,May-Sep,German,9,16,☀️,EUR,May-Sep,Oct-Apr
+Ghana,Africa,48000,2500,1000,500,5200,7,Oct-Mar,English,6,27,☀️,GHS,Oct-Mar,Apr-Sep
+Greece,Europe,45000,5000,2000,1000,5200,7,May-Sep,Greek,8,24,☀️,EUR,May-Sep,Oct-Apr
+Grenada,Americas,55000,4500,1700,800,5200,7,Jan-May,English,8,27,☀️,XCD,Jan-May,Jun-Dec
+Guatemala,Americas,48000,3000,1200,600,5200,7,Nov-Apr,Spanish,6,22,☀️,GTQ,Nov-Apr,May-Oct
+Guinea,Africa,52000,2000,800,400,5200,7,Nov-Apr,French,4,26,☀️,GNF,Nov-Apr,May-Oct
+Guinea-Bissau,Africa,55000,2000,800,400,5200,7,Nov-Apr,Portuguese,4,27,☀️,XOF,Nov-Apr,May-Oct
+Guyana,Americas,52000,3000,1200,600,5200,7,Feb-Aug,English,6,26,☀️,GYD,Feb-Aug,Sep-Jan
+Haiti,Americas,48000,2000,800,400,5200,7,Nov-Mar,French,3,27,☀️,HTG,Nov-Mar,Apr-Oct
+Honduras,Americas,48000,2500,1000,500,5200,7,Dec-Apr,Spanish,5,26,☀️,HNL,Dec-Apr,May-Nov
+Hungary,Europe,44000,4000,1600,700,5200,5,Apr-Sep,Hungarian,8,16,☀️,HUF,Apr-Sep,Oct-Mar
+Iceland,Europe,65000,8000,2800,1200,5200,7,Jun-Aug,Icelandic,9,8,❄️,ISK,Jun-Aug,Sep-May
+India,Asia,5000,1500,500,300,0,5,Oct-Mar,Hindi,7,25,☀️,INR,Oct-Mar,Apr-Sep
+Indonesia,Asia,22000,2500,1000,600,0,7,May-Sep,Indonesian,7,27,☀️,IDR,Apr-Oct,Nov-Mar
+Iran,Asia,38000,2500,1000,500,0,7,Mar-May,Persian,4,20,🌸,IRR,Mar-May,Jun-Feb
+Iraq,Asia,40000,2500,1000,500,0,7,Oct-Apr,Arabic,3,25,☀️,IQD,Oct-Apr,May-Sep
+Ireland,Europe,55000,6000,2200,1000,5200,7,May-Sep,English,9,12,🌧️,EUR,May-Sep,Oct-Apr
+Israel,Asia,38000,5000,1800,900,0,7,Mar-May,Hebrew,7,20,🌸,ILS,Mar-May,Jun-Feb
+Italy,Europe,58000,7000,2300,1100,5200,7,Apr-Jun,Italian,8,20,☀️,EUR,Apr-Oct,Nov-Mar
+Jamaica,Americas,52000,4000,1500,800,5200,7,Dec-Apr,English,7,27,☀️,JMD,Dec-Apr,May-Nov
+Japan,Asia,55000,7000,2500,1200,5200,8,Mar-May,Japanese,9,15,🌸,JPY,Mar-May,Sep-Nov
+Jordan,Asia,35000,4000,1500,800,5200,6,Mar-May,Arabic,7,20,☀️,JOD,Mar-May,Jun-Feb
+Kazakhstan,Asia,25000,3500,1200,700,0,7,Jun-Sep,Kazakh,7,15,☀️,KZT,Jun-Sep,Oct-May
+Kenya,Africa,55000,5000,2000,1000,5200,8,Jul-Oct,Swahili,7,20,☀️,KES,Jul-Oct,Nov-Jun
+Kiribati,Oceania,70000,4000,1500,800,5200,7,May-Oct,English,7,28,☀️,AUD,May-Oct,Nov-Apr
+Kuwait,Asia,30000,5000,1800,900,0,5,Nov-Mar,Arabic,8,28,☀️,KWD,Nov-Mar,Apr-Oct
+Kyrgyzstan,Asia,28000,2000,800,400,0,6,Jun-Sep,Kyrgyz,6,15,☀️,KGS,Jun-Sep,Oct-May
+Laos,Asia,22000,1800,700,400,3500,6,Nov-Mar,Lao,7,26,☀️,LAK,Nov-Mar,Apr-Oct
+Latvia,Europe,42000,3500,1300,700,5200,6,May-Sep,Latvian,8,12,☀️,EUR,May-Sep,Oct-Apr
+Lebanon,Asia,35000,3000,1200,600,0,7,Mar-May,Arabic,5,20,☀️,LBP,Mar-May,Jun-Feb
+Lesotho,Africa,52000,2500,1000,500,5200,7,May-Sep,English,6,15,❄️,LSL,May-Sep,Oct-Apr
+Liberia,Africa,55000,2000,800,400,5200,7,Nov-Apr,English,3,26,☀️,LRD,Nov-Apr,May-Oct
+Libya,Africa,48000,2500,1000,500,5200,7,Mar-May,Arabic,3,25,☀️,LYD,Mar-May,Jun-Feb
+Liechtenstein,Europe,55000,7000,2500,1200,5200,5,Jun-Sep,German,9,12,❄️,CHF,Jun-Sep,Oct-May
+Lithuania,Europe,40000,3500,1300,700,5200,6,May-Sep,Lithuanian,8,12,☀️,EUR,May-Sep,Oct-Apr
+Luxembourg,Europe,55000,6000,2200,1000,5200,5,May-Sep,French,9,12,🌧️,EUR,May-Sep,Oct-Apr
+Madagascar,Africa,55000,2500,1000,500,5200,8,Apr-Oct,Malagasy,6,22,☀️,MGA,Apr-Oct,Nov-Mar
+Malawi,Africa,52000,2000,800,400,5200,7,May-Oct,English,5,22,☀️,MWK,May-Oct,Nov-Apr
+Malaysia,Asia,20000,3500,1200,700,0,5,Mar-Oct,Malay,8,28,☀️,MYR,May-Sep,Nov-Jan
+Maldives,Asia,35000,15000,3000,1500,0,5,Nov-Apr,Dhivehi,9,28,☀️,MVR,Nov-Apr,May-Oct
+Mali,Africa,52000,2000,800,400,5200,7,Nov-Feb,French,4,30,☀️,XOF,Nov-Feb,Mar-Oct
+Malta,Europe,45000,5000,1800,900,5200,7,Apr-Oct,Maltese,8,20,☀️,EUR,Apr-Oct,Nov-Mar
+Marshall Islands,Oceania,70000,4000,1500,800,5200,7,Dec-Apr,English,7,27,☀️,USD,Dec-Apr,May-Nov
+Mauritania,Africa,55000,2000,800,400,5200,7,Nov-Apr,Arabic,4,28,☀️,MRU,Nov-Apr,May-Oct
+Mauritius,Africa,48000,5000,1800,900,0,7,May-Dec,English,8,24,☀️,MUR,May-Dec,Jan-Apr
+Mexico,Americas,55000,4000,1500,800,5200,7,Nov-Mar,Spanish,7,24,☀️,MXN,Nov-Apr,May-Oct
+Micronesia,Oceania,70000,4000,1500,800,5200,7,Dec-Apr,English,7,27,☀️,USD,Dec-Apr,May-Nov
+Moldova,Europe,38000,2000,800,400,5200,6,May-Sep,Romanian,6,12,☀️,MDL,May-Sep,Oct-Apr
+Monaco,Europe,60000,10000,3500,1500,5200,5,May-Sep,French,9,18,☀️,EUR,May-Sep,Oct-Apr
+Mongolia,Asia,35000,2500,1000,500,0,7,Jun-Sep,Mongolian,7,10,❄️,MNT,Jun-Sep,Oct-May
+Montenegro,Europe,40000,3500,1300,700,5200,6,May-Sep,Montenegrin,7,18,☀️,EUR,May-Sep,Oct-Apr
+Morocco,Africa,40000,3500,1300,700,5200,7,Mar-May,Arabic,7,20,☀️,MAD,Mar-May,Sep-Nov
+Mozambique,Africa,52000,3000,1200,600,5200,7,May-Sep,Portuguese,5,24,☀️,MZN,May-Sep,Oct-Apr
+Myanmar,Asia,24000,2500,900,500,5000,7,Nov-Feb,Burmese,6,26,☀️,MMK,Nov-Feb,Mar-Oct
+Namibia,Africa,55000,4000,1500,800,5200,8,May-Oct,English,7,20,☀️,NAD,May-Oct,Nov-Apr
+Nauru,Oceania,75000,4000,1500,800,5200,7,May-Oct,Nauruan,6,28,☀️,AUD,May-Oct,Nov-Apr
+Nepal,Asia,8000,1500,800,500,0,5,Oct-Nov,Nepali,8,18,❄️,NPR,Sep-Dec,Jun-Aug
+Netherlands,Europe,60000,7500,2300,1100,5200,5,Apr-Aug,Dutch,9,15,🌷,EUR,Apr-Aug,Sep-Mar
+New Zealand,Oceania,85000,7500,2600,1200,15000,10,Dec-Feb,English,9,18,☀️,NZD,Dec-Feb,Mar-Nov
+Nicaragua,Americas,48000,2500,1000,500,5200,7,Nov-Apr,Spanish,6,27,☀️,NIO,Nov-Apr,May-Oct
+Niger,Africa,55000,2000,800,400,5200,7,Nov-Feb,French,3,30,☀️,XOF,Nov-Feb,Mar-Oct
+Nigeria,Africa,48000,3000,1200,600,5200,7,Nov-Feb,English,4,27,☀️,NGN,Nov-Feb,Mar-Oct
+North Korea,Asia,40000,2000,800,400,0,5,Apr-May,Korean,1,12,🌸,KPW,Apr-May,Jun-Mar
+North Macedonia,Europe,38000,2500,1000,500,5200,6,May-Sep,Macedonian,7,15,☀️,MKD,May-Sep,Oct-Apr
+Norway,Europe,60000,7000,2500,1200,5200,7,Jun-Aug,Norwegian,9,10,❄️,NOK,Jun-Aug,Sep-May
+Oman,Asia,30000,4000,1500,800,0,6,Oct-Mar,Arabic,8,28,☀️,OMR,Oct-Mar,Apr-Sep
+Pakistan,Asia,25000,2000,800,400,0,7,Oct-Mar,Urdu,4,25,☀️,PKR,Oct-Mar,Apr-Sep
+Palau,Oceania,70000,5000,1800,900,5200,7,Dec-Apr,English,8,27,☀️,USD,Dec-Apr,May-Nov
+Panama,Americas,52000,4000,1500,800,5200,7,Dec-Apr,Spanish,7,26,☀️,PAB,Dec-Apr,May-Nov
+Papua New Guinea,Oceania,65000,3500,1300,700,5200,7,May-Oct,English,5,26,☀️,PGK,May-Oct,Nov-Apr
+Paraguay,Americas,50000,2500,1000,500,5200,7,May-Sep,Spanish,6,24,☀️,PYG,May-Sep,Oct-Apr
+Peru,Americas,60000,3500,1400,700,5200,8,May-Sep,Spanish,7,18,☀️,PEN,May-Sep,Oct-Apr
+Philippines,Asia,20000,3000,1000,600,0,7,Dec-May,Filipino,7,27,☀️,PHP,Dec-May,Jun-Nov
+Poland,Europe,43000,3500,1400,700,5200,6,May-Sep,Polish,8,14,☀️,PLN,May-Sep,Oct-Apr
+Portugal,Europe,48000,5000,1800,900,5200,7,Apr-Jun,Portuguese,9,19,☀️,EUR,Apr-Oct,Nov-Mar
+Qatar,Asia,28000,5000,1800,900,0,5,Nov-Mar,Arabic,8,28,☀️,QAR,Nov-Mar,Apr-Oct
+Romania,Europe,40000,3000,1200,600,5200,6,May-Sep,Romanian,7,16,☀️,RON,May-Sep,Oct-Apr
+Russia,Europe,45000,4000,1500,800,0,10,Jun-Aug,Russian,6,12,❄️,RUB,Jun-Aug,Sep-May
+Rwanda,Africa,52000,3000,1200,600,5200,7,Jun-Sep,Kinyarwanda,6,20,☀️,RWF,Jun-Sep,Oct-May
+Saint Kitts,Americas,60000,5000,1800,900,5200,7,Dec-Apr,English,8,26,☀️,XCD,Dec-Apr,May-Nov
+Saint Lucia,Americas,58000,5000,1800,900,5200,7,Dec-Apr,English,8,27,☀️,XCD,Dec-Apr,May-Nov
+Saint Vincent,Americas,58000,4500,1700,800,5200,7,Dec-Apr,English,7,27,☀️,XCD,Dec-Apr,May-Nov
+Samoa,Oceania,65000,4000,1500,800,5200,7,May-Oct,Samoan,7,26,☀️,WST,May-Oct,Nov-Apr
+San Marino,Europe,50000,5000,1800,900,5200,5,May-Sep,Italian,9,18,☀️,EUR,May-Sep,Oct-Apr
+Sao Tome,Africa,60000,3000,1200,600,5200,7,Jun-Sep,Portuguese,6,25,☀️,STN,Jun-Sep,Oct-May
+Saudi Arabia,Asia,32000,5000,1800,900,0,7,Nov-Mar,Arabic,7,28,☀️,SAR,Nov-Mar,Apr-Oct
+Senegal,Africa,48000,2500,1000,500,5200,7,Nov-May,French,6,27,☀️,XOF,Nov-May,Jun-Oct
+Serbia,Europe,38000,3000,1200,600,5200,6,May-Sep,Serbian,7,18,☀️,RSD,May-Sep,Oct-Apr
+Seychelles,Africa,52000,8000,2800,1200,0,7,Apr-Oct,English,8,27,☀️,SCR,Apr-Oct,Nov-Mar
+Sierra Leone,Africa,55000,2000,800,400,5200,7,Nov-Apr,English,4,27,☀️,SLL,Nov-Apr,May-Oct
+Singapore,Asia,22000,8000,2500,1000,0,4,Feb-Apr,English,9,27,☀️,SGD,Nov-Jan,May-Jun
+Slovakia,Europe,42000,3500,1300,700,5200,6,May-Sep,Slovak,8,14,☀️,EUR,May-Sep,Oct-Apr
+Slovenia,Europe,45000,4500,1700,800,5200,6,May-Sep,Slovene,8,15,☀️,EUR,May-Sep,Oct-Apr
+Solomon Islands,Oceania,70000,4000,1500,800,5200,7,May-Oct,English,6,27,☀️,SBD,May-Oct,Nov-Apr
+Somalia,Africa,60000,2000,800,400,5200,7,Dec-Feb,Somali,2,28,☀️,SOS,Dec-Feb,Mar-Nov
+South Africa,Africa,55000,5000,1800,900,5200,8,May-Sep,Zulu,7,18,☀️,ZAR,May-Sep,Oct-Apr
+South Korea,Asia,40000,5000,1800,900,5200,7,Apr-Jun,Korean,8,18,🌸,KRW,Mar-May,Sep-Nov
+South Sudan,Africa,60000,2000,800,400,5200,7,Dec-Feb,English,2,30,☀️,SSP,Dec-Feb,Mar-Nov
+Spain,Europe,55000,6000,2000,1000,5200,7,Apr-Jun,Spanish,8,22,☀️,EUR,Apr-Oct,Nov-Mar
+Sri Lanka,Asia,12000,2500,1000,600,5200,6,Dec-Mar,Sinhala,7,27,☀️,LKR,Dec-Mar,May-Sep
+Sudan,Africa,52000,2000,800,400,5200,7,Nov-Feb,Arabic,3,30,☀️,SDG,Nov-Feb,Mar-Oct
+Suriname,Americas,55000,3500,1300,700,5200,7,Feb-Aug,Dutch,6,27,☀️,SRD,Feb-Aug,Sep-Jan
+Sweden,Europe,55000,6000,2200,1000,5200,7,Jun-Aug,Swedish,9,12,❄️,SEK,Jun-Aug,Sep-May
+Switzerland,Europe,70000,10000,3000,1500,5200,6,Jun-Sep,German,9,14,❄️,CHF,Jun-Sep,Oct-May
+Syria,Asia,40000,1500,600,300,0,7,Mar-May,Arabic,1,20,🌸,SYP,Mar-May,Jun-Feb
+Taiwan,Asia,28000,4000,1500,800,0,7,Mar-May,Chinese,8,22,🌸,TWD,Mar-May,Jun-Feb
+Tajikistan,Asia,30000,2000,800,400,0,6,Jun-Sep,Tajik,5,15,☀️,TJS,Jun-Sep,Oct-May
+Tanzania,Africa,60000,5500,2000,1000,5200,8,Jun-Oct,Swahili,7,22,☀️,TZS,Jun-Oct,Nov-May
+Thailand,Asia,18000,3000,1200,700,0,7,Nov-Feb,Thai,8,28,☀️,THB,Nov-Mar,May-Oct
+Timor-Leste,Asia,45000,2500,1000,500,0,7,May-Nov,Portuguese,6,26,☀️,USD,May-Nov,Dec-Apr
+Togo,Africa,50000,2000,800,400,5200,7,Nov-Feb,French,5,27,☀️,XOF,Nov-Feb,Mar-Oct
+Tonga,Oceania,70000,4000,1500,800,5200,7,May-Oct,Tongan,7,25,☀️,TOP,May-Oct,Nov-Apr
+Trinidad,Americas,52000,4000,1500,800,5200,7,Jan-May,English,7,26,☀️,TTD,Jan-May,Jun-Dec
+Tunisia,Africa,38000,3000,1200,600,5200,7,Mar-May,Arabic,7,20,☀️,TND,Mar-May,Jun-Feb
+Turkey,Europe,30000,4000,1500,800,0,7,Apr-Jun,Turkish,7,20,☀️,TRY,Apr-Oct,Nov-Mar
+Turkmenistan,Asia,35000,2500,1000,500,0,7,Apr-Jun,Turkmen,5,25,☀️,TMT,Apr-Jun,Jul-Mar
+Tuvalu,Oceania,75000,4000,1500,800,5200,7,May-Oct,Tuvaluan,6,28,☀️,AUD,May-Oct,Nov-Apr
+Uganda,Africa,52000,3000,1200,600,5200,8,Jun-Aug,English,6,22,☀️,UGX,Jun-Aug,Sep-May
+Ukraine,Europe,38000,2500,1000,500,0,7,May-Sep,Ukrainian,5,12,☀️,UAH,May-Sep,Oct-Apr
+UAE,Asia,25000,7000,2000,1000,5200,5,Nov-Mar,Arabic,9,28,☀️,AED,Nov-Mar,Apr-Oct
+UK,Europe,68000,9000,2800,1300,5200,6,May-Sep,English,8,15,🌧️,GBP,May-Sep,Oct-Apr
+USA,Americas,75000,8000,2500,1200,15000,10,Apr-Jun,English,8,20,☀️,USD,Apr-Oct,Nov-Mar
+Uruguay,Americas,58000,4500,1700,800,5200,7,Dec-Mar,Spanish,8,18,☀️,UYU,Dec-Mar,Apr-Nov
+Uzbekistan,Asia,28000,2000,800,400,0,7,May-Sep,Uzbek,6,18,☀️,UZS,May-Sep,Oct-Apr
+Vanuatu,Oceania,70000,4000,1500,800,5200,7,May-Oct,Bislama,7,26,☀️,VUV,May-Oct,Nov-Apr
+Vatican City,Europe,50000,8000,2500,1200,5200,5,May-Sep,Italian,9,18,☀️,EUR,May-Sep,Oct-Apr
+Venezuela,Americas,55000,2500,1000,500,5200,7,Dec-Apr,Spanish,4,26,☀️,VES,Dec-Apr,May-Nov
+Vietnam,Asia,20000,2000,900,500,3500,7,Feb-Apr,Vietnamese,8,25,☀️,VND,Nov-Apr,May-Oct
+Yemen,Asia,45000,2000,800,400,0,7,Oct-Apr,Arabic,2,25,☀️,YER,Oct-Apr,May-Sep
+Zambia,Africa,52000,3000,1200,600,5200,8,May-Oct,English,6,22,☀️,ZMW,May-Oct,Nov-Apr
+Zimbabwe,Africa,52000,3000,1200,600,5200,8,May-Oct,English,5,22,☀️,USD,May-Oct,Nov-Apr

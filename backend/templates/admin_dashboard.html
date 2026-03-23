@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | TravelBudget AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 30px;
+            padding: 15px 30px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        .logo i {
+            font-size: 28px;
+            color: #3b82f6;
+        }
+        .logo span {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .admin-badge {
+            background: #3b82f6;
+            padding: 5px 15px;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.8rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background: rgba(59,130,246,0.2);
+            color: #3b82f6;
+        }
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: #1e293b;
+            border-radius: 25px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+        }
+        .stat-info h3 {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        .stat-number {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        /* Section Cards */
+        .section-card {
+            background: #1e293b;
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .section-title {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+            color: #cbd5e1;
+        }
+        th {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: rgba(59,130,246,0.1);
+        }
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .badge-success {
+            background: #22c55e;
+            color: white;
+        }
+        .badge-warning {
+            background: #f59e0b;
+            color: white;
+        }
+        .stars {
+            color: #fbbf24;
+        }
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+        .btn-logout {
+            background: #ef4444;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+        .btn-logout:hover {
+            background: #dc2626;
+        }
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin Dashboard</span>
+                <div class="admin-badge">TravelBudget AI</div>
+            </div>
+            <div class="nav-links">
+                <a href="/">← Back to Site</a>
+                <a href="/admin/logout" class="btn-logout">Logout</a>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-info">
+                    <h3>Total Users</h3>
+                    <div class="stat-number">{{ total_users }}</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                <div class="stat-info">
+                    <h3>Total Reviews</h3>
+                    <div class="stat-number">{{ total_reviews }}</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-suitcase"></i></div>
+                <div class="stat-info">
+                    <h3>Saved Trips</h3>
+                    <div class="stat-number">{{ total_trips }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fas fa-users"></i> Registered Users
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                            <th>Reviews</th>
+                            <th>Trips</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td><strong>{{ user.username }}</strong></td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.created_at.strftime('%d %b %Y') }}</td>
+                            <td>{{ user.reviews|length }}</td>
+                            <td>{{ user.saved_trips|length }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fas fa-star"></i> User Reviews
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Country</th>
+                            <th>Rating</th>
+                            <th>Review</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for review in reviews %}
+                        <tr>
+                            <td>{{ review.id }}</td>
+                            <td><strong>{{ review.author.username }}</strong></td>
+                            <td>{{ review.country }}</td>
+                            <td class="stars">
+                                {% for i in range(review.rating) %}★{% endfor %}
+                                {% for i in range(5 - review.rating) %}☆{% endfor %}
+                            </td>
+                            <td>{{ review.comment[:50] }}{% if review.comment|length > 50 %}...{% endif %}</td>
+                            <td>{{ review.created_at.strftime('%d %b %Y') }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Saved Trips Section -->
+        <div class="section-card">
+            <div class="section-title">
+                <i class="fas fa-suitcase"></i> Saved Trips
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Budget</th>
+                            <th>Days</th>
+                            <th>People</th>
+                            <th>Style</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trip in saved_trips %}
+                        <tr>
+                            <td>{{ trip.id }}</td>
+                            <td><strong>{{ trip.user.username }}</strong></td>
+                            <td>₹{{ trip.budget|int }}</td>
+                            <td>{{ trip.days }}</td>
+                            <td>{{ trip.people }}</td>
+                            <td>{{ trip.style|title }}</td>
+                            <td>{{ trip.created_at.strftime('%d %b %Y, %H:%M') }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

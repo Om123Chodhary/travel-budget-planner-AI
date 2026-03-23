@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | TravelBudget AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .navbar h1 {
+            color: #667eea;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .review-card, .trip-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .stars {
+            color: #ffc107;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1>✈️ TravelBudget AI</h1>
+            <div>
+                <a href="/" class="btn-outline" style="margin-right: 10px; text-decoration: none; padding: 8px 15px; border-radius: 20px;">🏠 Home</a>
+                <a href="/logout" style="color: #dc3545; text-decoration: none;">Logout</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h2>👤 {{ current_user.username }}</h2>
+            <p>📧 {{ current_user.email }}</p>
+            <p>📅 Member since: {{ current_user.created_at.strftime('%B %Y') }}</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">{{ saved_trips|length }}</div>
+                    <div>Trips Planned</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">{{ user_reviews|length }}</div>
+                    <div>Reviews Written</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">{{ avg_ratings|length }}</div>
+                    <div>Countries Rated</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h3>📝 My Reviews</h3>
+            {% if user_reviews %}
+                {% for review in user_reviews %}
+                <div class="review-card">
+                    <strong>📍 {{ review.country }}</strong>
+                    <div class="stars">
+                        {% for i in range(review.rating) %}⭐{% endfor %}
+                        {% for i in range(5 - review.rating) %}☆{% endfor %}
+                    </div>
+                    <p>{{ review.comment }}</p>
+                    <small>{{ review.created_at.strftime('%d %b %Y') }}</small>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No reviews yet. Go plan a trip and share your experience!</p>
+                <a href="/" class="btn" style="display: inline-block; margin-top: 15px;">Plan a Trip →</a>
+            {% endif %}
+        </div>
+
+        <div class="profile-card">
+            <h3>📌 Saved Trips</h3>
+            {% if saved_trips %}
+                {% for trip in saved_trips %}
+                <div class="trip-card">
+                    <strong>💰 Budget: ₹{{ trip.budget|int|format_number }}</strong><br>
+                    📅 {{ trip.days }} days | 👥 {{ trip.people }} people | 🎒 {{ trip.style|title }}<br>
+                    <small>{{ trip.created_at.strftime('%d %b %Y, %H:%M') }}</small>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No saved trips yet. Start planning your dream vacation!</p>
+                <a href="/" class="btn" style="display: inline-block; margin-top: 15px;">Plan a Trip →</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
