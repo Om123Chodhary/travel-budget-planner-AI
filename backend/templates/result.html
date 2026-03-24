@@ -511,111 +511,116 @@
         </div>
 
         <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-group">
-                <button class="filter-btn active" data-filter="all">🌍 All</button>
-                <button class="filter-btn" data-filter="Asia">🗾 Asia</button>
-                <button class="filter-btn" data-filter="Europe">🏰 Europe</button>
-                <button class="filter-btn" data-filter="Africa">🦁 Africa</button>
-                <button class="filter-btn" data-filter="Americas">🗽 Americas</button>
-                <button class="filter-btn" data-filter="Oceania">🏝️ Oceania</button>
-            </div>
-            <select class="sort-select" id="sortSelect">
-                <option value="price">💰 Price: Low to High</option>
-                <option value="price-desc">💰 Price: High to Low</option>
-                <option value="safety">🛡️ Safety Rating</option>
-                <option value="name">📛 Name A-Z</option>
-            </select>
-        </div>
+       <!-- Filters Section -->
+        <!-- Simple Working Filters -->
+<div class="filters-section">
+    <div class="filter-group">
+        <button onclick="showAll()" style="padding: 8px 20px; margin: 5px; border-radius: 30px; border: none; cursor: pointer; background: #3b82f6; color: white;">🌍 All</button>
+        <button onclick="showContinent('Asia')" style="padding: 8px 20px; margin: 5px; border-radius: 30px; border: none; cursor: pointer; background: #f0f0f0;">🗾 Asia</button>
+        <button onclick="showContinent('Europe')" style="padding: 8px 20px; margin: 5px; border-radius: 30px; border: none; cursor: pointer; background: #f0f0f0;">🏰 Europe</button>
+        <button onclick="showContinent('Africa')" style="padding: 8px 20px; margin: 5px; border-radius: 30px; border: none; cursor: pointer; background: #f0f0f0;">🦁 Africa</button>
+        <button onclick="showContinent('Americas')" style="padding: 8px 20px; margin: 5px; border-radius: 30px; border: none; cursor: pointer; background: #f0f0f0;">🗽 Americas</button>
+        <button onclick="showContinent('Oceania')" style="padding: 8px 20px; margin: 5px; border-radius: 30px; border: none; cursor: pointer; background: #f0f0f0;">🏝️ Oceania</button>
+    </div>
+    <select id="sortSelect" onchange="sortCards()" style="padding: 8px 20px; border-radius: 30px;">
+        <option value="price">💰 Price: Low to High</option>
+        <option value="price-desc">💰 Price: High to Low</option>
+        <option value="safety">🛡️ Safety Rating</option>
+        <option value="name">📛 Name A-Z</option>
+    </select>
+</div>
 
         <!-- Countries Grid -->
-        {% if countries %}
-        <div class="countries-grid" id="countriesGrid">
-            {% for c in countries %}
-            <div class="country-card" data-continent="{{ c.continent }}" data-price="{{ c.total_cost|replace(',', '')|int }}" data-safety="{{ c.safety }}" data-name="{{ c.country }}">
-                <div class="country-header">
-                    <div class="country-name">
-                        {{ c.country }}
-                        <span style="font-size: 0.8rem;">⭐ {{ c.safety }}/10</span>
-                    </div>
-                    <div class="country-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> {{ c.continent }}</span>
-                        <span><i class="fas fa-thermometer-half"></i> {{ c.weather_icon }} {{ c.temperature }}°C</span>
-                    </div>
-                </div>
-                <div class="country-body">
-                    <div class="cost-breakdown">
-                        <div class="cost-item">
-                            <span><i class="fas fa-plane"></i> Flight</span>
-                            <span>₹{{ c.flight_cost }}</span>
-                        </div>
-                        <div class="cost-item">
-                            <span><i class="fas fa-hotel"></i> Hotel ({{ c.days }} days)</span>
-                            <span>₹{{ c.hotel_cost }}</span>
-                        </div>
-                        <div class="cost-item">
-                            <span><i class="fas fa-utensils"></i> Food ({{ c.days }} days)</span>
-                            <span>₹{{ c.food_cost }}</span>
-                        </div>
-                        <div class="cost-item">
-                            <span><i class="fas fa-bus"></i> Transport ({{ c.days }} days)</span>
-                            <span>₹{{ c.transport_cost }}</span>
-                        </div>
-                        <div class="cost-item">
-                            <span><i class="fas fa-passport"></i> Visa Fee</span>
-                            <span>₹{{ c.visa_cost }}</span>
-                        </div>
-                    </div>
-                    <div class="total-cost">
-                        <div>💰 TOTAL COST ({{ c.people }} person, {{ c.days }} days)</div>
-                        <div class="value">₹{{ c.total_cost }}</div>
-                    </div>
-                </div>
-                <div class="country-footer">
-                    <span class="badge"><i class="fas fa-calendar"></i> {{ c.best_time }}</span>
-                    <span class="badge"><i class="fas fa-language"></i> {{ c.language }}</span>
-                    <span class="badge"><i class="fas fa-coins"></i> {{ c.currency }}</span>
-                    {% if c.avg_rating and c.avg_rating > 0 %}
-                    <span class="badge"><i class="fas fa-star"></i> {{ c.avg_rating }}/5 ({{ c.review_count }})</span>
-                    {% endif %}
-                </div>
-                {% if user_logged_in %}
-                <button class="review-btn" onclick="showReviewModal('{{ c.country }}', {{ loop.index }})">
-                    <i class="fas fa-pen-fancy"></i> Write a Review
-                </button>
-                {% endif %}
-                <div id="reviewModal{{ loop.index }}" class="modal">
-                    <div class="modal-content">
-                        <h3><i class="fas fa-star" style="color: #fbbf24;"></i> Review: {{ c.country }}</h3>
-                        <form action="/add_review" method="POST">
-                            <input type="hidden" name="country" value="{{ c.country }}">
-                            <select name="rating" required>
-                                <option value="5">⭐⭐⭐⭐⭐ 5 stars - Excellent</option>
-                                <option value="4">⭐⭐⭐⭐ 4 stars - Very Good</option>
-                                <option value="3">⭐⭐⭐ 3 stars - Good</option>
-                                <option value="2">⭐⭐ 2 stars - Fair</option>
-                                <option value="1">⭐ 1 star - Poor</option>
-                            </select>
-                            <textarea name="comment" rows="4" placeholder="Share your experience about {{ c.country }}..." required></textarea>
-                            <div style="display: flex; gap: 12px; margin-top: 20px;">
-                                <button type="submit" class="btn-submit"><i class="fas fa-check"></i> Submit Review</button>
-                                <button type="button" class="btn-cancel" onclick="hideReviewModal({{ loop.index }})"><i class="fas fa-times"></i> Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+  <!-- Countries Grid -->
+        <!-- Countries Grid -->
+{% if countries %}
+<div class="countries-grid" id="countriesGrid">
+    {% for c in countries %}
+    <div class="country-card" 
+         data-continent="{% if c.continent == 'Asia' %}Asia{% elif c.continent == 'Europe' %}Europe{% elif c.continent == 'Africa' %}Africa{% elif c.continent == 'Americas' %}Americas{% elif c.continent == 'Oceania' %}Oceania{% else %}Other{% endif %}" 
+         data-price="{{ c.total_cost|replace(',', '')|int }}" 
+         data-safety="{{ c.safety }}" 
+         data-name="{{ c.country }}">
+        <div class="country-header">
+            <div class="country-name">
+                {{ c.country }}
+                <span style="font-size: 0.8rem;">⭐ {{ c.safety }}/10</span>
             </div>
-            {% endfor %}
-        </div>
-        {% else %}
-        <div class="stats-grid">
-            <div class="stat-card" style="grid-column: 1/-1; text-align: center;">
-                <div class="stat-icon">😔</div>
-                <div class="stat-label">No destinations found!</div>
-                <div class="stat-value">Try increasing your budget</div>
-                <a href="/" class="action-btn action-btn-primary" style="display: inline-block; margin-top: 20px;">← Plan Another Trip</a>
+            <div class="country-meta">
+                <span>📍 {{ c.continent }}</span>
+                <span>🌡️ {{ c.weather_icon }} {{ c.temperature }}°C</span>
             </div>
         </div>
+        <div class="country-body">
+            <div class="cost-breakdown">
+                <div class="cost-item">
+                    <span class="cost-label">✈️ Flight</span>
+                    <span class="cost-value">₹{{ c.flight_cost }}</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">🏨 Hotel ({{ c.days }} days)</span>
+                    <span class="cost-value">₹{{ c.hotel_cost }}</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">🍽️ Food ({{ c.days }} days)</span>
+                    <span class="cost-value">₹{{ c.food_cost }}</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">🚕 Transport ({{ c.days }} days)</span>
+                    <span class="cost-value">₹{{ c.transport_cost }}</span>
+                </div>
+                <div class="cost-item">
+                    <span class="cost-label">📜 Visa Fee</span>
+                    <span class="cost-value">₹{{ c.visa_cost }}</span>
+                </div>
+            </div>
+            <div class="total-cost">
+                <div class="label">💰 TOTAL COST ({{ c.people }} person(s), {{ c.days }} days)</div>
+                <div class="value">₹{{ c.total_cost }}</div>
+            </div>
+        </div>
+        <div class="country-footer">
+            <span class="badge">📅 Best: {{ c.best_time }}</span>
+            <span class="badge">🗣️ {{ c.language }}</span>
+            <span class="badge">💱 {{ c.currency }}</span>
+        </div>
+        {% if user_logged_in %}
+        <button class="review-btn" onclick="showReviewModal('{{ c.country }}', {{ loop.index }})">
+            ✍️ Write a Review
+        </button>
+        {% endif %}
+        <div id="reviewModal{{ loop.index }}" class="modal">
+            <div class="modal-content">
+                <h3>✍️ Review: {{ c.country }}</h3>
+                <form action="/add_review" method="POST">
+                    <input type="hidden" name="country" value="{{ c.country }}">
+                    <select name="rating" required>
+                        <option value="5">⭐⭐⭐⭐⭐ 5 stars - Excellent</option>
+                        <option value="4">⭐⭐⭐⭐ 4 stars - Very Good</option>
+                        <option value="3">⭐⭐⭐ 3 stars - Good</option>
+                        <option value="2">⭐⭐ 2 stars - Fair</option>
+                        <option value="1">⭐ 1 star - Poor</option>
+                    </select>
+                    <textarea name="comment" rows="4" placeholder="Share your experience about {{ c.country }}..." required></textarea>
+                    <div style="display: flex; gap: 12px; margin-top: 20px;">
+                        <button type="submit" style="background: #22c55e; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">✅ Submit</button>
+                        <button type="button" onclick="hideReviewModal({{ loop.index }})" style="background: #ef4444; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">❌ Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="stats-grid">
+    <div class="stat-card" style="grid-column: 1/-1; text-align: center;">
+        <div class="stat-icon">😔</div>
+        <div class="stat-label">No destinations found!</div>
+        <div class="stat-value">Try increasing your budget</div>
+        <a href="/" class="btn" style="display: inline-block; margin-top: 20px;">← Plan Another Trip</a>
+    </div>
+</div>
         {% endif %}
 
         <!-- Action Buttons -->
@@ -628,76 +633,103 @@
             </button>
         </div>
     </div>
-
-    <script>
-        // Filter and Sort
+<script>
+    // Simple function to show all countries
+    function showAll() {
         const cards = document.querySelectorAll('.country-card');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const sortSelect = document.getElementById('sortSelect');
+        cards.forEach(card => {
+            card.style.display = 'block';
+        });
+        sortCards();
+        
+        // Update button colors
+        document.querySelectorAll('.filter-group button').forEach(btn => {
+            btn.style.background = '#f0f0f0';
+            btn.style.color = '#333';
+        });
+        event.target.style.background = '#3b82f6';
+        event.target.style.color = 'white';
+    }
+    
+    // Simple function to show specific continent
+    function showContinent(continent) {
+        const cards = document.querySelectorAll('.country-card');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+            const cardContinent = card.getAttribute('data-continent');
+            if (cardContinent === continent) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        console.log('Showing', visibleCount, 'countries in', continent);
+        sortCards();
+        
+        // Update button colors
+        document.querySelectorAll('.filter-group button').forEach(btn => {
+            btn.style.background = '#f0f0f0';
+            btn.style.color = '#333';
+        });
+        event.target.style.background = '#3b82f6';
+        event.target.style.color = 'white';
+    }
+    
+    // Sort function
+    function sortCards() {
+        const sortBy = document.getElementById('sortSelect').value;
         const grid = document.getElementById('countriesGrid');
-
-        function filterAndSort() {
-            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-            const sortBy = sortSelect.value;
-
-            let visibleCards = Array.from(cards);
-
-            if (activeFilter !== 'all') {
-                visibleCards = visibleCards.filter(card => 
-                    card.dataset.continent === activeFilter
-                );
-            }
-
-            visibleCards.sort((a, b) => {
-                if (sortBy === 'price') {
-                    return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-                } else if (sortBy === 'price-desc') {
-                    return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-                } else if (sortBy === 'safety') {
-                    return parseInt(b.dataset.safety) - parseInt(a.dataset.safety);
-                } else if (sortBy === 'name') {
-                    return a.dataset.name.localeCompare(b.dataset.name);
-                }
-                return 0;
-            });
-
-            visibleCards.forEach(card => grid.appendChild(card));
+        const cards = Array.from(document.querySelectorAll('.country-card'));
+        
+        // Get visible cards only
+        const visibleCards = cards.filter(card => card.style.display !== 'none');
+        
+        visibleCards.sort((a, b) => {
+            const priceA = parseInt(a.getAttribute('data-price')) || 0;
+            const priceB = parseInt(b.getAttribute('data-price')) || 0;
+            const safetyA = parseInt(a.getAttribute('data-safety')) || 0;
+            const safetyB = parseInt(b.getAttribute('data-safety')) || 0;
+            const nameA = a.getAttribute('data-name') || '';
+            const nameB = b.getAttribute('data-name') || '';
+            
+            if (sortBy === 'price') return priceA - priceB;
+            if (sortBy === 'price-desc') return priceB - priceA;
+            if (sortBy === 'safety') return safetyB - safetyA;
+            if (sortBy === 'name') return nameA.localeCompare(nameB);
+            return 0;
+        });
+        
+        // Reorder
+        visibleCards.forEach(card => grid.appendChild(card));
+    }
+    
+    // Review Modal Functions
+    function showReviewModal(country, index) {
+        const modal = document.getElementById('reviewModal' + index);
+        if (modal) modal.style.display = 'flex';
+    }
+    
+    function hideReviewModal(index) {
+        const modal = document.getElementById('reviewModal' + index);
+        if (modal) modal.style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        if (event.target.classList && event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
         }
-
-        if (filterBtns.length) {
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    filterAndSort();
-                });
-            });
-        }
-
-        if (sortSelect) {
-            sortSelect.addEventListener('change', filterAndSort);
-        }
-
-        // Modal Functions
-        function showReviewModal(country, index) {
-            var modal = document.getElementById('reviewModal' + index);
-            if (modal) modal.style.display = 'flex';
-        }
-
-        function hideReviewModal(index) {
-            var modal = document.getElementById('reviewModal' + index);
-            if (modal) modal.style.display = 'none';
-        }
-
-        // Close modal on outside click
-        window.onclick = function(event) {
-            var modals = document.getElementsByClassName('modal');
-            for (var i = 0; i < modals.length; i++) {
-                if (event.target === modals[i]) {
-                    modals[i].style.display = 'none';
-                }
-            }
-        }
-    </script>
+    }
+    
+    // Debug on load
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('=== All Countries ===');
+        document.querySelectorAll('.country-card').forEach(card => {
+            console.log(card.getAttribute('data-name'), ':', card.getAttribute('data-continent'));
+        });
+    });
+</script>
 </body>
 </html>

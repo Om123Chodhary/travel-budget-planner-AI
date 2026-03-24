@@ -1,36 +1,25 @@
-# ============================================
-# Travel Budget AI - COMPLETE VERSION
-# Features: Login, Signup, Reviews, Saved Trips, Admin Panel
-# ============================================
-
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import pandas as pd
-import numpy as np
 import os
-import joblib
 from datetime import datetime
 
 app = Flask(__name__)
 
-# ============================================
-# CONFIGURATION
-# ============================================
-
+# Configuration
 app.config['SECRET_KEY'] = 'travel-budget-ai-secret-key-2024'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travel_planner.db'
+basedir = os.path.abspath(os.path.dirname(__file__))
+instance_path = os.path.join(basedir, 'instance')
+os.makedirs(instance_path, exist_ok=True)
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(instance_path, "travel_planner.db")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
-# Admin credentials
-ADMIN_USERNAME = "Omaram123"
-ADMIN_PASSWORD = "7891424454"
 
 # ============================================
 # DATABASE MODELS
@@ -72,7 +61,6 @@ class SavedTrip(db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Create tables
 with app.app_context():
     db.create_all()
 
@@ -80,7 +68,7 @@ with app.app_context():
 # DATA LOADING
 # ============================================
 
-CSV_PATH = r'C:\Users\omaram\OneDrive\Desktop\travel-planner\data\countries.csv'
+CSV_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'countries.csv')
 
 def load_data():
     df = pd.read_csv(CSV_PATH)
@@ -92,6 +80,7 @@ def get_affordable_countries(budget, days, people, style):
     style_multiplier = {'budget': 0.8, 'moderate': 1.0, 'luxury': 1.5}
     multiplier = style_multiplier.get(style, 1.0)
     
+    # Calculate individual costs
     df['flight'] = df['flight_cost_inr']
     df['hotel'] = df['hotel_per_day_inr'] * days * multiplier
     df['food'] = df['food_per_day_inr'] * days * multiplier
@@ -100,13 +89,14 @@ def get_affordable_countries(budget, days, people, style):
     
     df['total_cost'] = (df['flight'] + df['hotel'] + df['food'] + df['transport'] + df['visa']) * people
     
+    # Filter by budget
     affordable = df[df['total_cost'] <= budget].copy()
     affordable = affordable.sort_values(['safety_rating', 'total_cost'], ascending=[False, True])
     
     return affordable
 
 # ============================================
-# ROUTES - Home & Auth
+# ROUTES
 # ============================================
 
 @app.route('/')
@@ -161,30 +151,12 @@ def logout():
     flash('Logged out successfully', 'success')
     return redirect(url_for('home'))
 
-# ============================================
-# ROUTES - Profile & Results
-# ============================================
-
 @app.route('/profile')
 @login_required
 def profile():
     saved_trips = SavedTrip.query.filter_by(user_id=current_user.id).order_by(SavedTrip.created_at.desc()).all()
     user_reviews = Review.query.filter_by(user_id=current_user.id).order_by(Review.created_at.desc()).all()
-    
-    reviews_data = {}
-    all_reviews = Review.query.all()
-    for review in all_reviews:
-        if review.country not in reviews_data:
-            reviews_data[review.country] = {'total': 0, 'count': 0}
-        reviews_data[review.country]['total'] += review.rating
-        reviews_data[review.country]['count'] += 1
-    
-    avg_ratings = {c: data['total']/data['count'] for c, data in reviews_data.items()}
-    
-    return render_template('profile.html', 
-                         saved_trips=saved_trips, 
-                         user_reviews=user_reviews,
-                         avg_ratings=avg_ratings)
+    return render_template('profile.html', saved_trips=saved_trips, user_reviews=user_reviews)
 
 @app.route('/result', methods=['POST'])
 def result():
@@ -199,7 +171,6 @@ def result():
     
     countries_df = get_affordable_countries(budget, days, people, style)
     
-    # Save trip if user is logged in
     if current_user.is_authenticated:
         saved_trip = SavedTrip(
             user_id=current_user.id,
@@ -211,29 +182,17 @@ def result():
         db.session.add(saved_trip)
         db.session.commit()
     
-    # Get reviews for countries
-    reviews = {}
-    all_reviews = Review.query.all()
-    for review in all_reviews:
-        if review.country not in reviews:
-            reviews[review.country] = {'ratings': [], 'comments': []}
-        reviews[review.country]['ratings'].append(review.rating)
-        reviews[review.country]['comments'].append(review.comment)
-    
     countries = []
-    for _, row in countries_df.head(20).iterrows():
-        country_reviews = reviews.get(row['country'], {'ratings': [], 'comments': []})
-        avg_rating = sum(country_reviews['ratings']) / len(country_reviews['ratings']) if country_reviews['ratings'] else 0
-        
+    for _, row in countries_df.iterrows():
         countries.append({
             'country': row['country'],
             'continent': row['continent'],
-            'total_cost': f"{row['total_cost']:,.0f}",
-            'flight_cost': f"{row['flight']:,.0f}",
-            'hotel_cost': f"{row['hotel']:,.0f}",
-            'food_cost': f"{row['food']:,.0f}",
-            'transport_cost': f"{row['transport']:,.0f}",
-            'visa_cost': f"{row['visa']:,.0f}",
+            'total_cost': int(row['total_cost']),
+            'flight_cost': int(row['flight']),
+            'hotel_cost': int(row['hotel']),
+            'food_cost': int(row['food']),
+            'transport_cost': int(row['transport']),
+            'visa_cost': int(row['visa']),
             'best_time': row['best_time'],
             'safety': row['safety_rating'],
             'language': row['language'],
@@ -241,15 +200,13 @@ def result():
             'weather_icon': row.get('weather_icon', '☀️'),
             'currency': row.get('currency_code', 'INR'),
             'days': days,
-            'people': people,
-            'avg_rating': round(avg_rating, 1),
-            'review_count': len(country_reviews['ratings'])
+            'people': people
         })
     
-    total_found = len(countries_df)
-    cheapest = countries_df['total_cost'].min() if total_found > 0 else 0
-    most_expensive = countries_df['total_cost'].max() if total_found > 0 else 0
-    avg_cost = countries_df['total_cost'].mean() if total_found > 0 else 0
+    total_found = len(countries)
+    cheapest = min([c['total_cost'] for c in countries]) if countries else 0
+    most_expensive = max([c['total_cost'] for c in countries]) if countries else 0
+    avg_cost = sum([c['total_cost'] for c in countries]) / total_found if countries else 0
     
     return render_template('result.html',
         name=name,
@@ -264,10 +221,6 @@ def result():
         style=style,
         user_logged_in=current_user.is_authenticated
     )
-
-# ============================================
-# ROUTES - Reviews
-# ============================================
 
 @app.route('/add_review', methods=['POST'])
 @login_required
@@ -288,32 +241,13 @@ def add_review():
     flash(f'Thank you! Your review for {country} has been posted.', 'success')
     return redirect(request.referrer or url_for('home'))
 
-@app.route('/api/country_reviews/<country>')
-def get_country_reviews(country):
-    reviews = Review.query.filter_by(country=country).order_by(Review.created_at.desc()).all()
-    
-    reviews_data = []
-    for review in reviews:
-        reviews_data.append({
-            'user': review.author.username,
-            'rating': review.rating,
-            'comment': review.comment,
-            'date': review.created_at.strftime('%Y-%m-%d')
-        })
-    
-    return jsonify(reviews_data)
-
-# ============================================
-# ADMIN PANEL
-# ============================================
-
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         
-        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+        if username == 'Omaram123' and password == '7891424454':
             session['admin_logged_in'] = True
             flash('Admin login successful!', 'success')
             return redirect(url_for('admin_dashboard'))
@@ -331,65 +265,25 @@ def admin_dashboard():
     reviews = Review.query.order_by(Review.created_at.desc()).all()
     saved_trips = SavedTrip.query.order_by(SavedTrip.created_at.desc()).all()
     
-    total_users = len(users)
-    total_reviews = len(reviews)
-    total_trips = len(saved_trips)
-    
     return render_template('admin_dashboard.html',
         users=users,
         reviews=reviews,
         saved_trips=saved_trips,
-        total_users=total_users,
-        total_reviews=total_reviews,
-        total_trips=total_trips
+        total_users=len(users),
+        total_reviews=len(reviews),
+        total_trips=len(saved_trips)
     )
 
 @app.route('/admin/logout')
 def admin_logout():
     session.pop('admin_logged_in', None)
-    flash('Admin logged out', 'info')
     return redirect(url_for('home'))
-
-# ============================================
-# API ENDPOINTS
-# ============================================
 
 @app.route('/api/countries')
 def api_countries():
     df = load_data()
     return jsonify(df.to_dict('records'))
 
-@app.route('/api/predict', methods=['POST'])
-def api_predict():
-    data = request.get_json()
-    budget = float(data.get('budget', 50000))
-    days = int(data.get('days', 7))
-    people = int(data.get('people', 2))
-    style = data.get('style', 'moderate')
-    
-    countries_df = get_affordable_countries(budget, days, people, style)
-    
-    result = []
-    for _, row in countries_df.head(10).iterrows():
-        result.append({
-            'country': row['country'],
-            'total_cost': row['total_cost'],
-            'safety': row['safety_rating'],
-            'continent': row['continent']
-        })
-    
-    return jsonify({
-        'budget': budget,
-        'days': days,
-        'people': people,
-        'style': style,
-        'destinations': result,
-        'total_found': len(countries_df)
-    })
-
-# ============================================
-# RUN APP
-# ============================================
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
