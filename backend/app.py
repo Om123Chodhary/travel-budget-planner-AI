@@ -8,7 +8,10 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Configuration
+# ============================================
+# CONFIGURATION
+# ============================================
+
 app.config['SECRET_KEY'] = 'travel-budget-ai-secret-key-2024'
 basedir = os.path.abspath(os.path.dirname(__file__))
 instance_path = os.path.join(basedir, 'instance')
@@ -20,6 +23,27 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+# ============================================
+# CSV PATH - FIXED FOR RENDER
+# ============================================
+
+def get_csv_path():
+    """Returns the correct path to countries.csv - works on both local and Render"""
+    # Check if running on Render
+    if os.environ.get('RENDER'):
+        # On Render, data folder is at root level
+        csv_path = '/opt/render/project/src/data/countries.csv'
+    else:
+        # On local, go up one level from backend folder
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        csv_path = os.path.join(base_dir, 'data', 'countries.csv')
+    
+    print(f"📁 CSV Path: {csv_path}")
+    print(f"📁 File exists: {os.path.exists(csv_path)}")
+    return csv_path
+
+CSV_PATH = get_csv_path()
 
 # ============================================
 # DATABASE MODELS
@@ -68,14 +92,20 @@ with app.app_context():
 # DATA LOADING
 # ============================================
 
-CSV_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'countries.csv')
-
 def load_data():
-    df = pd.read_csv(CSV_PATH)
-    return df
+    try:
+        df = pd.read_csv(CSV_PATH)
+        print(f"✅ CSV loaded successfully! {len(df)} rows")
+        print(f"Continents found: {df['continent'].unique()}")
+        return df
+    except Exception as e:
+        print(f"❌ Error loading CSV: {e}")
+        return None
 
 def get_affordable_countries(budget, days, people, style):
     df = load_data()
+    if df is None:
+        return pd.DataFrame()
     
     style_multiplier = {'budget': 0.8, 'moderate': 1.0, 'luxury': 1.5}
     multiplier = style_multiplier.get(style, 1.0)
@@ -282,6 +312,8 @@ def admin_logout():
 @app.route('/api/countries')
 def api_countries():
     df = load_data()
+    if df is None:
+        return jsonify({'error': 'No data'}), 500
     return jsonify(df.to_dict('records'))
 
 if __name__ == '__main__':
