@@ -25,25 +25,56 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 # ============================================
-# CSV PATH - FIXED FOR RENDER
+# CSV PATH - WITH FULL DEBUG
 # ============================================
 
+print("=" * 60)
+print("🔴 STARTING APP - DEBUG MODE")
+print("=" * 60)
+
 def get_csv_path():
-    """Returns the correct path to countries.csv - works on both local and Render"""
+    """Returns the correct path to countries.csv"""
+    print("🔴 DEBUG: get_csv_path() called")
+    
     # Check if running on Render
     if os.environ.get('RENDER'):
-        # On Render, data folder is at root level
-        csv_path = '/opt/render/project/src/data/countries.csv'
+        print("🔴 DEBUG: Running on RENDER")
+        # Try multiple possible paths
+        possible_paths = [
+            '/opt/render/project/src/data/countries.csv',
+            '/opt/render/project/src/backend/data/countries.csv',
+            '/opt/render/project/src/../data/countries.csv',
+            '/opt/render/project/src/data/countries.csv',
+        ]
+        
+        for path in possible_paths:
+            print(f"🔴 DEBUG: Checking path: {path}")
+            if os.path.exists(path):
+                print(f"✅ FOUND CSV at: {path}")
+                return path
+        
+        print("❌ No CSV found in any path!")
+        return '/opt/render/project/src/data/countries.csv'
     else:
-        # On local, go up one level from backend folder
+        print("🔴 DEBUG: Running LOCALLY")
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         csv_path = os.path.join(base_dir, 'data', 'countries.csv')
-    
-    print(f"📁 CSV Path: {csv_path}")
-    print(f"📁 File exists: {os.path.exists(csv_path)}")
-    return csv_path
+        print(f"🔴 DEBUG: Local path: {csv_path}")
+        print(f"🔴 DEBUG: File exists: {os.path.exists(csv_path)}")
+        return csv_path
 
 CSV_PATH = get_csv_path()
+print(f"🔴 DEBUG: FINAL CSV_PATH = {CSV_PATH}")
+print(f"🔴 DEBUG: File exists at final path: {os.path.exists(CSV_PATH)}")
+
+# List data folder contents if exists
+data_dir = os.path.dirname(CSV_PATH)
+if os.path.exists(data_dir):
+    print(f"🔴 DEBUG: Files in {data_dir}: {os.listdir(data_dir)}")
+else:
+    print(f"🔴 DEBUG: Data folder NOT found at: {data_dir}")
+
+print("=" * 60)
 
 # ============================================
 # DATABASE MODELS
@@ -89,23 +120,34 @@ with app.app_context():
     db.create_all()
 
 # ============================================
-# DATA LOADING
+# DATA LOADING - WITH FULL DEBUG
 # ============================================
 
 def load_data():
+    print("🔴 DEBUG: load_data() function STARTED")
     try:
+        print(f"🔴 DEBUG: Trying to read CSV from: {CSV_PATH}")
         df = pd.read_csv(CSV_PATH)
         print(f"✅ CSV loaded successfully! {len(df)} rows")
-        print(f"Continents found: {df['continent'].unique()}")
+        print(f"🔴 DEBUG: Columns: {df.columns.tolist()}")
+        print(f"🔴 DEBUG: Continents found: {df['continent'].unique()}")
         return df
+    except FileNotFoundError as e:
+        print(f"❌ ERROR: File not found - {e}")
+        return None
     except Exception as e:
-        print(f"❌ Error loading CSV: {e}")
+        print(f"❌ ERROR loading CSV: {e}")
         return None
 
 def get_affordable_countries(budget, days, people, style):
+    print(f"🔴 DEBUG: get_affordable_countries called with budget={budget}, days={days}, people={people}, style={style}")
+    
     df = load_data()
     if df is None:
+        print("🔴 DEBUG: df is None, returning empty DataFrame")
         return pd.DataFrame()
+    
+    print(f"🔴 DEBUG: df loaded, rows: {len(df)}")
     
     style_multiplier = {'budget': 0.8, 'moderate': 1.0, 'luxury': 1.5}
     multiplier = style_multiplier.get(style, 1.0)
@@ -119,8 +161,17 @@ def get_affordable_countries(budget, days, people, style):
     
     df['total_cost'] = (df['flight'] + df['hotel'] + df['food'] + df['transport'] + df['visa']) * people
     
+    print(f"🔴 DEBUG: Cost calculated. Min cost: {df['total_cost'].min()}, Max cost: {df['total_cost'].max()}")
+    
     # Filter by budget
     affordable = df[df['total_cost'] <= budget].copy()
+    print(f"🔴 DEBUG: Before filter: {len(df)} countries, After filter: {len(affordable)} countries")
+    
+    # Print continent breakdown
+    for continent in ['Asia', 'Europe', 'Africa', 'Americas', 'Oceania']:
+        count = len(affordable[affordable['continent'] == continent])
+        print(f"🔴 DEBUG: {continent}: {count} countries affordable")
+    
     affordable = affordable.sort_values(['safety_rating', 'total_cost'], ascending=[False, True])
     
     return affordable
